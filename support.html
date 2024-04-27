@@ -1,0 +1,160 @@
+<!doctype html>
+<html ng-app="OBSMobileApp" class="ng-scope">
+
+<!-- Mirrored from ku192.site/support by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 Apr 2024 07:14:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <style type="text/css">
+        @charset  "UTF-8";
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+            display: none !important;
+        }
+
+        ng\:form {
+            display: block;
+        }
+
+        .ng-animate-shim {
+            visibility: hidden;
+        }
+
+        .ng-anchor {
+            position: absolute;
+        }</style>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>KU Web</title>
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+
+        html {
+            -webkit-text-size-adjust: none; /* Never autoresize text */
+        }
+    </style>
+    <link href="style/mobile_main.css" rel="stylesheet">
+    <link href="style/mobile_CustomerServ.css" rel="stylesheet">
+</head>
+<body ontouchstart="" block-ui="main" class="ng-scope block-ui block-ui-anim-fade">
+<div ng-controller="HeaderCtrl as ctrl" class="bg_header ng-scope">
+    <a class="btn_back" href="index.html"></a>
+    <h1 class="bg_header_name ">HỖ TRỢ</h1>
+</div>
+<div id="container_main" class="container_main">
+    <div class="service ng-scope">
+        <div>
+            <a class="service_Link">
+                Liên hệ ngay
+            </a>
+            <ul class="service_list" onclick="goToPath('index.html')">
+                <li class="service_InL">
+                    <div class="Serv_img">
+                        <img src="Areas/Mobile/Content/Images/icon_Serv_online.svg">
+                    </div>
+                </li>
+                <li class="service_InC">
+                    <h3>Hỗ trợ</h3>
+                </li>
+                <li class="service_InR">
+                    <div class="btn_ServID">Liên hệ</div>
+                </li>
+            </ul>
+            <ul class="service_list" onclick="window.open('https://t.me/hotrokubet11', '_blank')">
+                <li class="service_InL">
+                    <div class="Serv_img"><img src="Areas/Mobile/Content/Images/vi-vn/icon_telegram.svg"></div>
+                </li>
+                <li class="service_InC">
+                    <h3>Telegram</h3>
+                </li>
+                <li class="service_InR">
+                    <div class="btn_ServID">Liên hệ</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="ng-scope">
+    <div class="footer" id="FooterTouchstartControll">
+        <a href="index.html" class="footer_list btn_footer_home">
+            <h5>Trang chủ</h5>
+        </a>
+        <a
+            class="footer_list btn_footer_serv active">
+            <h5>Hỗ trợ</h5>
+        </a>
+        <a class="footer_list btn_footer_DW ng-scope" onclick="showNapRut()">
+            <h5 id="DepositCenterH5">Nạp rút tiền</h5>
+        </a>
+        <div id="menuNapRutTien" class="footer_DW_open off">
+            <div>
+
+                                    <a class="btn_footer_transfer ng-scope">
+                        <span id="PlatformTransferSpan">Chuyển quỹ</span>
+                    </a>
+                                                    <a class="btn_footer_deposit ng-scope">
+                        <div class="img_deposit" id="MemberDepositImage"></div>
+                        <span id="MemberDepositSpan">Nạp tiền</span>
+                    </a>
+                                                    <a class="btn_footer_withdrawal ng-scope">
+                        <div class="img_withdrawal" id="MemberWithdrawalImage"></div>
+                        <span id="MemberWithdrawalSpan">Rút tiền</span>
+                    </a>
+                
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+        <a  href="index.html"  class="footer_list btn_footer_tradeRec ng-scope">
+            <h5>
+                Giao dịch
+            </h5>
+        </a>
+        <a href="index.html" class="footer_list btn_footer_menu redC" >
+            <h5 id="MemberCenterH5">Tôi</h5>
+        </a>
+    </div>
+</div>
+</body>
+<script src="js/jquery-3.6.4.js"></script>
+<script>
+    function showInfoUser() {
+        console.log('style hiện tại:')
+        let styleNow = $('#inforMDropOUT')[0].style.display;
+        if (styleNow == 'block') {
+            $('.icon_inforMoney')[0].classList.remove('on')
+        } else {
+            $('.icon_inforMoney')[0].classList.add('on')
+        }
+        $('#inforMDropOUT')[0].style.display = styleNow == 'none' ? 'block' : 'none';
+        console.log('set xong')
+    }
+    function showNapRut() {
+        console.log('showNapRut:')
+        let check = $('#menuNapRutTien.off')
+        console.log(check)
+        console.log(check.length)
+        if (check.length) {
+            $('#menuNapRutTien')[0].classList.remove('off')
+            $('#menuNapRutTien')[0].classList.add('on')
+        } else {
+            console.log('rơi vào else')
+            $('#menuNapRutTien')[0].classList.remove('on')
+            $('#menuNapRutTien')[0].classList.add('off')
+        }
+    }
+    function goToPath(path) {
+        window.open(path, '_blank')
+    }
+</script>
+
+<!-- Mirrored from ku192.site/support by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 Apr 2024 07:14:39 GMT -->
+</html>

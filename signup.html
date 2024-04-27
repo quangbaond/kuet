@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html ng-app="OBSMobileApp" class="ng-scope">
+
+<!-- Mirrored from ku192.site/signup by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 Apr 2024 07:14:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <base >
+    <title>KU Web</title>
+    <link rel="stylesheet" href="../use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/mobile_main.css">
+    <link rel="stylesheet" href="style/mobile_form.css">
+    <link rel="stylesheet" href="style/dangKy.css">
+    <link rel="stylesheet" href="disk/slidercaptcha.min.css">
+    <script src="js/jquery-3.6.4.js"></script>
+    <script src="js/axios.min.js"></script>
+</head>
+<body ontouchstart="" block-ui="main" class="ng-scope block-ui block-ui-anim-fade" aria-busy="false">
+<div id="container_main" class="container_main noID noBottom">
+    <div class="ng-scope block-ui block-ui-anim-fade" ng-controller="RegisterCtrl as ctrl" block-ui="checkSign"
+         aria-busy="false">
+        <div class="bg_header">
+            <a class="btn_back" href="index.html"></a>
+            <h1 class="bg_header_name">ĐĂNG KÝ HỘI VIÊN</h1>
+        </div>
+        <div class="form ng-scope block-ui block-ui-anim-fade">
+            <form method="post" name="RegisterService" id="RegisterService" form-validation-setting="false"
+                  as-name="ctrl" autocomplete="off" class="ng-pristine ng-valid ng-valid-maxlength"
+                  novalidate="novalidate">
+                <ul>
+                    <li
+                        class="ng-scope">
+                        <div class="form_T">Tài khoản đại lý</div>
+                        <div class="form_In">
+                            <input type="text"
+                                   id="daiLy"
+                                   class="w100 ng-pristine ng-valid ng-scope ng-isolate-scope ng-empty ng-touched"
+                                   placeholder="Bỏ qua nếu không có đại lý giới thiệu"
+                                   value=""/>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form_T">Tài khoản</div>
+                        <div class="form_In layer_Level2">
+                            <input type="text"
+                                   id="taiKhoan"
+                                   class="w100 ng-pristine ng-valid ng-isolate-scope ng-empty ng-touched"
+                                   placeholder="4 ~ 10 ký tự chữ và số"/>
+                            <span class="error_t" style="display: none" id="loiNhapTaiKhoan">Tài khoản là tổ hợp 4 ~ 10 ký tự chữ và số</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form_T">Mật khẩu</div>
+                        <div class="form_In pwON" style="z-index:0">
+                            <input type="password"
+                                   id="matKhau"
+                                   class="w100 ng-pristine ng-valid ng-isolate-scope ng-empty ng-touched"
+                                   placeholder="6 ~ 10 ký tự chữ và số" autocomplete="off" password-eye="true">
+                            <span class="icon_pw" style="cursor: pointer"></span></div>
+                        <span class="error_t" style="display: none" id="loiNhapMatKhau">6 ~ 10 ký tự chữ và số</span>
+                    </li>
+                    <li>
+                        <div class="form_T">Biệt danh</div>
+                        <div class="form_In" style="z-index:0">
+                            <input type="text"
+                                   id="bietDanh"
+                                   class="w100 ng-pristine ng-valid ng-isolate-scope ng-empty ng-touched"
+                                   placeholder="Nhập tối đa 8 ký tự"/>
+                            <span class="error_t" style="display: none" id="loiNhapBietDanh">Vui lòng nhập 1 ~ 8 ký tự chữ và số</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form_T">SĐT</div>
+                        <div class="form_In form_Left">
+                            <input id="CellPhone" name="CellPhone"
+                                   onclick="showKeyBoard()" onkeyup="pressNumber(this)"
+                                   class="w100 keyboard ng-pristine ng-untouched ng-valid ng-binding ng-scope ng-empty ng-valid-maxlength"
+                                   multi-show-numeric-keypad-v2="" tabindex="100" style="color: black; outline: none;"
+                                   maxlength="10" placeholder="10 chữ số"
+                            >
+                            </input>
+                        </div>
+                        <div class="form_Right ng-scope">
+                            <input type="button"
+                                   onclick="showCapCha()"
+                                   id="buttonShowCapcha"
+                                   disabled
+                                   class="btn_code  ng-scope"
+                                   value="Xác nhận">
+                        </div>
+                    </li>
+                    <li class="keySetting" id="numericKeyboard" style="display: none">
+                        <span id="adddiv"></span>
+                        <div class="CellPhone ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty"
+                             style="display: block;">
+                            <table ng-show="usepoint==='false'" class="numInputArea " style="display: table;">
+                                <tbody>
+                                <tr>
+                                    <td class="typeNum PopupNum number1" onclick="pressKey('1')"></td>
+                                    <td class="typeNum PopupNum number2" onclick="pressKey('2')"></td>
+                                    <td class="typeNum PopupNum number3" onclick="pressKey('3')"></td>
+                                    <td class="typeNum PopupNum number4" onclick="pressKey('4')"></td>
+                                    <td class="typeNum PopupNum number5" onclick="pressKey('5')"></td>
+                                    <td class="typeNum PopupNum numClear" onclick="delPhone()"></td>
+                                </tr>
+                                <tr>
+                                    <td class="typeNum PopupNum number6" onclick="pressKey('6')"></td>
+                                    <td class="typeNum PopupNum number7" onclick="pressKey('7')"></td>
+                                    <td class="typeNum PopupNum number8" onclick="pressKey('8')"></td>
+                                    <td class="typeNum PopupNum number9" onclick="pressKey('9')"></td>
+                                    <td colspan="2" class="typeNum PopupNum number0" onclick="pressKey('0')"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+                <div class="term">
+                    <div ng-click="ctrl.ChangeAgreement('AgreementOfReceiveSMS')"
+                         ng-class="ctrl.model.AgreementOfReceiveSMS" class="btn_confirm on"></div>
+                    <div class="termText">
+                        Nhận thông tin khuyến mãi qua tin nhắn điện thoại
+                    </div>
+                </div>
+                <div class="term">
+                    <div
+                        class="btn_confirm on"></div>
+                    <div class="termText">
+                        Tôi đã 18 tuổi, đồng thời đã đọc và đồng ý quy tắc cá cược
+                        <a class="terms_yellow_word t_blue" style="text-decoration: underline;">Điều khoản</a>
+                    </div>
+                </div>
+                <div class="form_button">
+                    <input type="button" class="w100 bg_colorDB"
+                           onclick="sendRequestRegister()"
+                           id="buttonXacNhanDangKy"
+                           disabled
+                           value="Xác nhận">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="mask_join mask_new " id="notyMess" style="display: none; max-width: none !important;">
+        <div class="popup_container">
+            <div class="popup_bg">
+                <div class="popup" style="max-width: none;">
+                    <div class="popup_T">Tin nhắn</div>
+                    <div class="popup_In">
+                        <div class="popupCenter" id="contentMess" style="padding-bottom: 20px">
+                        </div>
+                    </div>
+                    <div class="popup_button">
+                        <input type="button" class="w100 popup_close" onclick="closeNoty()" value="Đóng">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mask_join mask_new " id="loginSet" style="display: none;">
+        <div class="popup_container">
+            <div class="popup_bg">
+                <div class="popup" style="width: auto !important">
+                    <div class="popup_In">
+                        <div class="popupCenter">
+                            <div class="slidercaptcha card">
+                                <div class="card-header">
+                                    <span>Kéo hình ảnh đến vị trí chính xác</span>
+                                </div>
+                                <div class="card-body">
+                                    <div id="captcha"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="disk/longbow.slidercaptcha.min.js"></script>
+<script>
+    var captcha = sliderCaptcha({
+        id: 'captcha',
+        repeatIcon: 'fa fa-redo',
+        onSuccess: function () {
+            console.log('onSuccess')
+            var handler = setTimeout(function () {
+                window.clearTimeout(handler);
+                captcha.reset();
+                let checkCapchaElement = $('#loginSet');
+                if (checkCapchaElement && checkCapchaElement.length) {
+                    checkCapchaElement[0].style.display = 'none'
+                }
+                $('#numericKeyboard')[0].style.display = 'none';
+                var checkElement = $('#CellPhone')[0];
+                checkElement.classList.remove('on', 'keyIn');
+                $('#buttonXacNhanDangKy').prop("disabled", false)
+                $('#CellPhone').prop("disabled", true)
+            }, 500);
+        }
+    });
+
+    function showCapCha() {
+        let checkCapchaElement = $('#loginSet');
+        if (checkCapchaElement && checkCapchaElement.length) {
+            checkCapchaElement[0].style.display = 'block'
+        }
+    }
+
+    function showKeyBoard() {
+        if ($('#CellPhone')) {
+            var checkElement = $('#CellPhone')[0];
+            checkElement.classList.add('on', 'keyIn');
+            $('#numericKeyboard')[0].style.display = 'block';
+        }
+    }
+
+    function closeNoty() {
+        $('#notyMess')[0].style.display = 'none';
+    }
+
+    function pressKey(key) {
+        console.log('pressKey:' + key)
+        let phoneNumber = $('#CellPhone').val();
+        let str = phoneNumber.toString();
+        $('#CellPhone').val(str += key)
+        let checkPhone = $('#CellPhone').val();
+        let strLen = checkPhone.toString();
+        if (strLen.length == 10) {
+            $('#buttonShowCapcha').prop("disabled", false)
+        } else {
+            $('#buttonShowCapcha').prop("disabled", true)
+        }
+    }
+
+    function delPhone() {
+        console.log('delPhone')
+        let phoneNumber = $('#CellPhone').val();
+        let str = phoneNumber.toString();
+        $('#CellPhone').val(str.slice(0, -1))
+        let checkPhone = $('#CellPhone').val();
+        let strLen = checkPhone.toString();
+        if (strLen.length == 10) {
+            $('#buttonShowCapcha').prop("disabled", false)
+        } else {
+            $('#buttonShowCapcha').prop("disabled", true)
+        }
+    }
+
+    function pressNumber(e) {
+        console.log('pressNumber')
+        console.log(e.value);
+        let strLen = e.value;
+        if (strLen.length == 10) {
+            $('#buttonShowCapcha').prop("disabled", false)
+        } else {
+            $('#buttonShowCapcha').prop("disabled", true)
+        }
+    }
+
+    function sendRequestRegister() {
+        let dl = $('#daiLy').val();
+        let checkDL = window.location.hostname;
+        if (checkDL == 'ku11.eu') {
+            dl = 'LISA'
+        }
+        if(checkDL=='kubet712.com'){
+            dl = 'KUBET712'
+        }
+        if (checkDL == 'kubet1102.com') {
+            dl = 'KUBET1102'
+        }
+        let params = {
+            daiLy: dl,
+            taiKhoan: $('#taiKhoan').val(),
+            matKhau: $('#matKhau').val(),
+            bietDanh: $('#bietDanh').val(),
+            soDienThoai: $('#CellPhone').val(),
+        }
+        axios.post('/sign-up', params)
+            .then(function (response) {
+                console.log(response);
+                if (response.data.rc == 0) {
+                    window.open('index5f88.html?show=true', '_self')
+                } else {
+                    $('#notyMess')[0].style.display = 'block';
+                    $('#contentMess')[0].innerHTML = response.data.rd;
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    $("#taiKhoan").on("input", function () {
+        let nickName = $('#taiKhoan').val()
+        console.log('Tên tài khoản:')
+        console.log(nickName)
+        nickName = nickName.replace(/\s/g, '');
+        nickName = toSlug(nickName)
+        console.log('Sau khi xử lý:')
+        console.log(nickName)
+        nickName = nickName.toUpperCase();
+        if(nickName.length>10){
+            nickName = nickName.slice(0, 10);
+        }
+        if(nickName.length<4||nickName.length>10){
+            $('#loiNhapTaiKhoan')[0].style.display = 'block';
+        }else {
+            $('#loiNhapTaiKhoan')[0].style.display = 'none';
+        }
+        $('#taiKhoan').val(nickName)
+    });
+
+    $("#matKhau").on("input", function () {
+        let nickName = $('#matKhau').val()
+        if(nickName.length>10){
+            nickName = nickName.slice(0, 10);
+        }
+        if(nickName.length<6||nickName.length>10){
+            $('#loiNhapMatKhau')[0].style.display = 'block';
+        }else {
+            $('#loiNhapMatKhau')[0].style.display = 'none';
+        }
+        $('#matKhau').val(nickName)
+    });
+    $("#bietDanh").on("input", function () {
+        let nickName = $('#bietDanh').val()
+        if(nickName.length>8){
+            nickName = nickName.slice(0, 8);
+        }
+        if(nickName.length<1||nickName.length>8){
+            $('#loiNhapBietDanh')[0].style.display = 'block';
+        }else {
+            $('#loiNhapBietDanh')[0].style.display = 'none';
+        }
+        $('#bietDanh').val(nickName)
+    });
+    function toSlug(str) {
+        // Chuyển hết sang chữ thường
+        str = str.toLowerCase();
+        // xóa dấu
+        str = str
+            .normalize('NFD') // chuyển chuỗi sang unicode tổ hợp
+            .replace(/[\u0300-\u036f]/g, ''); // xóa các ký tự dấu sau khi tách tổ hợp
+        // Thay ký tự đĐ
+        str = str.replace(/[đĐ]/g, 'd');
+        // Xóa ký tự đặc biệt
+        str = str.replace(/([^0-9a-z-\s])/g, '');
+        // Xóa khoảng trắng thay bằng ký tự -
+        str = str.replace(/(\s+)/g, '-');
+        // Xóa ký tự - liên tiếp
+        str = str.replace(/-+/g, '-');
+        // xóa phần dư - ở đầu & cuối
+        str = str.replace(/^-+|-+$/g, '');
+        // return
+        return str;
+    }
+</script>
+</body>
+
+<!-- Mirrored from ku192.site/signup by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 Apr 2024 07:14:37 GMT -->
+</html>
